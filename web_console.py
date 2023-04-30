@@ -1,6 +1,7 @@
 import json
 import sys
 from playwright.sync_api import Playwright, sync_playwright, expect
+import bwfun
 
 def run(playwright: Playwright, dictionary) -> None:
 
@@ -27,6 +28,9 @@ def run(playwright: Playwright, dictionary) -> None:
             exit()
         if cmd == 'youtube':
             page.goto("https://www.youtube.com/")
+        if cmd == 'bwlogin':
+            bwfun.bwlogin()
+            
 
 
 prog_name = sys.argv[0]
