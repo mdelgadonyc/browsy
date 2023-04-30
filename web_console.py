@@ -12,10 +12,9 @@ def run(playwright: Playwright, dictionary) -> None:
         data = file.read()
 
     js = json.loads(data)
+    print(f'Data from file: {js}')
+    print(f'job site name: {js["JOBSITE"]}')
 
-    print(f'Data from file: {data}')
-    print(f'Data after json.loads: {js}')
-    
     chromium_dir = Path.home() / '.config/chromium'
     print(f'chromium_dir is: {chromium_dir}')
     #browser = playwright.chromium.launch(headless=False)   # doesn't persist session
@@ -25,6 +24,8 @@ def run(playwright: Playwright, dictionary) -> None:
     page.get_by_role("combobox", name="Search").click()
     page.get_by_role("combobox", name="Search").fill("Hello world!")
     page.get_by_role("combobox", name="Search").press("Enter")
+
+    sites.jobsite(page, js)
 
     while (1):
         cmd = input("--> ")
@@ -38,8 +39,9 @@ def run(playwright: Playwright, dictionary) -> None:
             bwfun.bwlogin()
         if cmd == 'dump':
             print(page.content())
-        if cmd == 'linkedin':
-            sites.linkedin(page)
+        if cmd == js["JOBSITE"]:
+            sites.jobsite(page, js)
+
 
 prog_name = sys.argv[0]
 
