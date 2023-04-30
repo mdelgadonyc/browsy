@@ -4,8 +4,8 @@ web_console is a Python command-line tool that allows interactive management of 
 
 ## Installation
 
-Install playwright
-$ pip install playwright
+Install playwright\
+$ pip install playwright\
 $ pip install pytest-playwright
 
 Place `web_console.py` in the current working directory.
