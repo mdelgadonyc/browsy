@@ -17,7 +17,6 @@ def run(playwright: Playwright, dictionary) -> None:
 
     chromium_dir = Path.home() / '.config/chromium'
     print(f'chromium_dir is: {chromium_dir}')
-    #browser = playwright.chromium.launch(headless=False)   # doesn't persist session
     browser = playwright.chromium.launch_persistent_context(chromium_dir, headless=False)
     page = browser.new_page()
     page.goto( js["$HOME_PAGE"] )
@@ -25,7 +24,8 @@ def run(playwright: Playwright, dictionary) -> None:
     page.get_by_role("combobox", name="Search").fill("Hello world!")
     page.get_by_role("combobox", name="Search").press("Enter")
 
-    sites.jobsite(page, js)
+    # uncomment line below to skip to jobsite for debugging purposes
+    # sites.jobsite(page, js)
 
     while (1):
         cmd = input("--> ")
@@ -41,7 +41,8 @@ def run(playwright: Playwright, dictionary) -> None:
             print(page.content())
         if cmd == js["JOBSITE"]:
             sites.jobsite(page, js)
-
+        if cmd == js["WORK"]["WORKSITE"]:
+            sites.worksite(page, js)
 
 prog_name = sys.argv[0]
 
