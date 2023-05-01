@@ -12,6 +12,7 @@ Place `web_console.py` in the current working directory.
 
 ## Usage
 
+`read -s SECRET`
 `python web_console.py sample.txt`
 
 ## Contributing
