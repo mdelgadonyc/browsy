@@ -1,5 +1,6 @@
 import json
 import sys
+import logging
 from playwright.sync_api import Playwright, sync_playwright, expect
 from pathlib import Path
 import bwfun
@@ -12,12 +13,13 @@ def run(playwright: Playwright, dictionary) -> None:
         data = file.read()
 
     js = json.loads(data)
-    print(f'Data from file: {js}')
-    print(f'job site name: {js["JOBSITE"]}')
+    logging.debug(f'Data from file: {js}')
+    logging.debug(f'job site name: {js["JOBSITE"]}')
 
     chromium_dir = Path.home() / '.config/chromium'
-    print(f'chromium_dir is: {chromium_dir}')
+    logging.debug(f'chromium_dir is: {chromium_dir}')
     browser = playwright.chromium.launch_persistent_context(chromium_dir, headless=False)
+
     page = browser.new_page()
     page.goto( js["$HOME_PAGE"] )
     page.get_by_role("combobox", name="Search").click()
