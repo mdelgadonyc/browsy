@@ -1,6 +1,8 @@
 import getpass
 import re
+from datetime import date
 
+site_name = ''
 
 def worksite(page, js):
     page.goto(js["WORK"]["WORKURL"])
@@ -29,18 +31,25 @@ def jobsite(page, js):
 #    page.get_by_label("Password").fill({secret})
 #    page.get_by_role("button", name="Sign in", exact=True).click()
 
-    page.get_by_role("link", name="Jobs").click()
+    page.get_by_role("link", name="Jobs", exact=True).click()
     page.get_by_role("link", name=re.compile(js["JOBSEARCH"])).click()
     console(page,js)
 
 def console(page, js):
+    site_name = 'js["JOBSITE"]'
     while (1):
-        cmd = input(f'[sites] --> ')
+        cmd = input(f'[{site_name}] --> ')
         if cmd == 'exit':
             break
         if cmd == 'dump':
             print(page.content())
         if cmd == 'apply':
-            print(page.locator(f'xpath={js["JOBXPATH"]}').text_content())
+            today = date.today()
+            current_date = today.strftime("%m/%d/%Y")
+            job_title = page.locator(f'xpath={js["JOBXPATH"]}').text_content().strip()
+            company = page.locator(f'xpath={js["CORPPATH"]}').text_content().strip()
             page.locator(f'xpath={js["JOBXPATH"]}').click()
-        
+            # Split URL to attain and save the half before the "?"
+            job_url = page.url.split('?')
+            print(f'{current_date},{job_title},{company},{job_url[0]}')
+            page.get_by_role("button", name="Apply").click()
