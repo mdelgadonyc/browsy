@@ -1,6 +1,6 @@
-# web_console
+# Browsy
 
-web_console is a Python command-line tool that allows interactive management of a web session under control of Playwright.
+Browsy is a Python command-line tool that allows interactive management of a web session under control of Playwright.
 
 ## Installation
 
@@ -8,16 +8,16 @@ Install playwright\
 $ pip install playwright
 $ playwright install
 
-Place `web_console.py` in the current working directory.
+Place `browsy.py` in the current working directory.
 
 ## Usage
 
 `read -s SECRET`
-`python web_console.py sample.txt`
+`python browsy.py sample.txt`
 
 ## Contributing
 
-Please open an issue to suggest fixes or ideas for improving web_console
+Please open an issue to suggest fixes or ideas for improving browsy
 
 ## License
 
