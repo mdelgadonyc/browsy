@@ -1,4 +1,6 @@
-# Browsy is a Python command-line tool that allows interactive management of a web session under Playwright control
+# Browsy 
+
+Browsy is a Python command-line tool that allows interactive management of a web session under control of Playwright.
 
 ## Installation
 
@@ -11,7 +13,6 @@ Place `browsy.py` in the current working directory.
 ## Usage
 
 `read -s SECRET`
-
 `python browsy.py sample.txt`
 
 ## Contributing
