@@ -1,4 +1,4 @@
-# bwfun.py -- module called by web_console to handle bitward vault API operations
+# bwfun.py -- module called by browsy to handle bitward vault API operations
 
 def bwlogin():
     pass
