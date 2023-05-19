@@ -1,19 +1,21 @@
 # Browsy 
-
 Browsy is a Python command-line tool that allows interactive management of a web session under control of Playwright.
 
 ## Installation
 
-Install playwright\
+### Create Virtual Environment for Python
+$ pip -m venv .venv-web_console
+
+### Install playwright
 $ pip install playwright\
 $ playwright install
 
 Place `browsy.py` in the current working directory.
 
 ## Usage
-
-`read -s SECRET`
-`python browsy.py sample.txt`
+`read -s SECRET`\
+`export SECRET`\
+`python web_console.py sample.txt`
 
 ## Contributing
 

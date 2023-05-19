@@ -2,24 +2,36 @@ import getpass
 import re
 from datetime import date
 import time
+import os
+import time
+import argos
+import generic
 
-site_name = ''
+site_name = ""
 
-def worksite(page, js):
+
+def worksite(page, js, browser):
+    site_name = "tcit"
     page.goto(js["WORK"]["WORKURL"])
     if ((page.get_by_placeholder("UNI")).is_visible()):
         print("authentication necessary")
-        secret = getpass.getpass()
+        secret = os.environ['SECRET']
         page.get_by_placeholder("UNI").click()
         page.get_by_placeholder("UNI").fill(js["WORK"]["USERNAME"])
         page.get_by_placeholder("UNI").press("Tab")
         page.get_by_placeholder("Password").fill(secret)
         page.get_by_placeholder("Password").press("Enter")
-        page.frame_locator("#duo_iframe").get_by_role("button", name="Send Me a Push").click()
+        time.sleep(3)
+        if page.frame_locator("#duo_iframe").get_by_label("Remember me for 24 hours").is_visible():
+            page.frame_locator("#duo_iframe").get_by_label("Remember me for 24 hours").check()
+            page.frame_locator("#duo_iframe").get_by_role("button", name="Send Me a Push").click()
+            time.sleep(5)
 
-    console(page, js)
+        site_name = "snow"
 
-def jobsite(page, js):
+    console(page, js, browser)
+
+def jobsearch(page, js):
 
     page.goto(js["JOBURL"])
 
@@ -35,6 +47,7 @@ def jobsite(page, js):
     #page.get_by_role("link", name="Jobs", exact=True).click()
     #page.get_by_role("link", name=re.compile(js["JOBSEARCH"])).click()
     console(page,js)
+
 
 def jobapply(page, js):
     today = date.today()
@@ -123,7 +136,41 @@ def jobapply(page, js):
 
 def console(page, js):
     site_name = js["JOBSITE"]
-    while (1):
+    while 1:
+        page.get_by_role("link", name="Jobs").click()
+        page.get_by_role("link", name=re.compile(js["JOBSEARCHTERMS"])).click()
+        console(page,js)
+
+def new_ticket(page, js):
+    site_name = "tcit->new ticket"
+    page.frame_locator("iframe[name=\"gsft_main\"]").get_by_role("link", name=re.compile(js["WORK"]["SNOW_SEARCH"])).click()
+    time.sleep(2)
+    page.frame_locator("iframe[name=\"gsft_main\"]").get_by_role("button", name="New", exact=True).click()
+
+    while 1:
+        cmd = input(f'[{site_name}] --> ')
+        if cmd == 'exit':
+            break
+        if cmd == 'dump':
+            print(page.content())
+        if cmd == 'reset':
+            generic.tcit_generic(page, js, js["WORK"]["RESET"])
+        if cmd == 'eduroam':
+            generic.tcit_generic(page, js, js["WORK"]["EDUROAM"])
+        if cmd =='duoenroll':
+            generic.tcit_generic(page, js, js["WORK"]["DUOENROLL"])
+        if cmd == 'duoverify':
+            generic.tcit_generic(page, js, js["WORK"]["DUOVERIFY"])
+        if cmd =='zoom':
+            generic.tcit_generic(page, js, js["WORK"]["SOFTWARE"]["ZOOM"])
+        if cmd=="shareddrive":
+            generic.tcit_generic(page, js, js["WORK"]["SHAREDDRIVE"])
+        if cmd=="generic":
+            generic.tcit_generic(page, js)
+
+def console(page, js, browser):
+    while 1:
+>>>>>>> Stashed changes
         cmd = input(f'[{site_name}] --> ')
         if cmd == 'exit':
             break
@@ -141,3 +188,12 @@ def console(page, js):
                 time.sleep(2)
             jobapply(page, js)
             '''
+            print(page.locator(f'xpath={js["JOBXPATH"]}').text_content())
+            page.locator(f'xpath={js["JOBXPATH"]}').click()
+        if cmd == 'new':
+            new_ticket(page, js)
+        if cmd == 'argos':
+            argos.tcit_argos(js, browser)
+        #if cmd=='search':
+        #    snow_search(page, js)
+        page.goto(js["WORK"]["WORKURL"])
