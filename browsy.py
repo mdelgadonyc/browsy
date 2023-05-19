@@ -19,7 +19,7 @@ def run(playwright: Playwright, dictionary) -> None:
     js = json.loads(data)
 
     logging.debug(f'Data from file: {js}')
-    logging.debug(f'job site name: {js["JOBSITE"]}')
+    logging.debug(f'job site name: {js["JOBSEARCH"]}')
 
     chromium_dir = Path.home() / '.config/chromium'
     logging.debug(f'chromium_dir is: {chromium_dir}')
@@ -40,7 +40,7 @@ def run(playwright: Playwright, dictionary) -> None:
         if cmd == 'dump':
             print(page.content())
         if cmd == js["JOBSEARCH"]:
-            sites.jobsearch(page, js)
+            sites.jobsearch(page, js, browser)
         if cmd == js["WORK"]["WORKSITE"]:
             sites.worksite(page, js, browser)
 

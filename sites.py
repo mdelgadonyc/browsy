@@ -31,7 +31,7 @@ def worksite(page, js, browser):
 
     console(page, js, browser)
 
-def jobsearch(page, js):
+def jobsearch(page, js, browser):
 
     page.goto(js["JOBURL"])
 
@@ -46,7 +46,7 @@ def jobsearch(page, js):
 
     #page.get_by_role("link", name="Jobs", exact=True).click()
     #page.get_by_role("link", name=re.compile(js["JOBSEARCH"])).click()
-    console(page,js)
+    console(page,js, browser)
 
 
 def jobapply(page, js):
@@ -134,12 +134,6 @@ def jobapply(page, js):
                 time.sleep(2)
                 break
 
-def console(page, js):
-    site_name = js["JOBSITE"]
-    while 1:
-        page.get_by_role("link", name="Jobs").click()
-        page.get_by_role("link", name=re.compile(js["JOBSEARCHTERMS"])).click()
-        console(page,js)
 
 def new_ticket(page, js):
     site_name = "tcit->new ticket"
@@ -169,8 +163,11 @@ def new_ticket(page, js):
             generic.tcit_generic(page, js)
 
 def console(page, js, browser):
+
     while 1:
->>>>>>> Stashed changes
+        # page.get_by_role("link", name="Jobs").click()
+        # page.get_by_role("link", name=re.compile(js["JOBSEARCHTERMS"])).click()
+        # site_name = js["JOBSITE"]
         cmd = input(f'[{site_name}] --> ')
         if cmd == 'exit':
             break
