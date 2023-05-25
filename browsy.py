@@ -31,6 +31,8 @@ def run(playwright: Playwright, dictionary) -> None:
     # sites.jobsearch(page, js)
     # sites.worksite(page, js, browser)
 
+    # TODO: Add "Browsy" ASCII logo
+
     while 1:
         cmd = input("--> ")
         if cmd == 'exit':
