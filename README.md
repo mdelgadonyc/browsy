@@ -4,7 +4,7 @@ Browsy is a Python command-line tool that allows interactive management of a web
 ## Installation
 
 ### Create Virtual Environment for Python
-$ pip -m venv .venv-web_console
+$ python -m venv .venv-web_console
 
 ### Install playwright
 $ pip install playwright\
