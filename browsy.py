@@ -55,3 +55,5 @@ if len(sys.argv) != 2:
 
 with sync_playwright() as playwright:
     run(playwright, sys.argv[1])
+
+# TODO - Add ASCII intro text

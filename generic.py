@@ -16,7 +16,6 @@ def tcit_generic(page, js, dictionary):
     for row in page.frame_locator("iframe[name=\"gsft_main\"]").get_by_role("combobox").all():
         logger.debug(row.text_content())
 
-
     page.frame_locator("iframe[name=\"gsft_main\"]").get_by_role("combobox", name="Mandatory - preloaded with saved dataCategory").select_option(dictionary["CATEGORY"])
     page.frame_locator("iframe[name=\"gsft_main\"]").get_by_role("combobox", name="Subcategory").select_option(dictionary["SUBCATEGORY"])
     page.frame_locator("iframe[name=\"gsft_main\"]").get_by_role("combobox", name="Channel").select_option("walk-in")
@@ -35,7 +34,7 @@ def tcit_generic(page, js, dictionary):
     full_name = page.frame_locator("iframe[name=\"gsft_main\"]").get_by_label("Caller", exact=True).input_value()
     time.sleep(1)
 
-    # TODO: Check if specialized comment exist otherwise default to GLAD2ASSIST
+    # Check if specialized comment exist otherwise default to GLAD2ASSIST
     if "COMMENT" in dictionary:
         #comments = dictionary["COMMENT"]
         comments = "".join(dictionary["COMMENT"])
@@ -47,7 +46,7 @@ def tcit_generic(page, js, dictionary):
         comments = comments.replace("NAME", full_name.split()[0])
         comments = comments.replace("ACTION", action)
 
-    # TODO: Check if specialized internal work note exist otherwise default to INOTE
+    # Check if specialized internal work note exist otherwise default to INOTE
     if "IACTION" in dictionary:
         internal = dictionary["IACTION"]
         internal = internal.replace("NAME", full_name)
