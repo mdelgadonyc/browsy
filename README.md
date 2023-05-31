@@ -15,7 +15,7 @@ Place `browsy.py` in the current working directory.
 ## Usage
 `read -s SECRET`\
 `export SECRET`\
-`python web_console.py sample.txt`
+`python browsy.py sample.txt`
 
 ## Contributing
 
