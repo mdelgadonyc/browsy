@@ -159,6 +159,10 @@ def new_ticket(page, js):
             generic.tcit_generic(page, js, js["WORK"]["SOFTWARE"]["ZOOM"])
         if cmd=="shareddrive":
             generic.tcit_generic(page, js, js["WORK"]["SHAREDDRIVE"])
+        if cmd=="printlogic":
+            generic.tcit_generic(page, js, js["WORK"]["PRINTLOGIC"])
+        if cmd == "reimage":
+            generic.tcit_generic(page, js, js["WORK"]["REIMAGE"])
         if cmd=="generic":
             generic.tcit_generic(page, js)
 
