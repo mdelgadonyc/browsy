@@ -38,6 +38,12 @@ def run(playwright: Playwright, dictionary) -> None:
             page.goto("https://phet-dev.colorado.edu/html/build-an-atom/0.0.0-3/simple-text-only-test-page.html")
         if cmd == 'dump':
             print(page.content())
+        if cmd == 'goto':
+            url = input("URL: ")
+            # append https:// to start of URL if not provided.
+            if not url.startswith("http"):
+                url = f"https://{url}"
+            page.goto(url)
 
 
 prog_name = sys.argv[0]
