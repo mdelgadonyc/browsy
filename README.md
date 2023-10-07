@@ -17,7 +17,7 @@ To install Browsy locally:
 
 2. ### Create Virtual Environment for Python
     $ `sudo apt install python3-venv`  
-    $ `python -m venv .venv-browsy`  
+    $ `python3 -m venv .venv-browsy`  
     $ `source .venv-browsy/bin/activate`
 
 3. ### Install playwright
