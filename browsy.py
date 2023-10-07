@@ -27,8 +27,11 @@ def run(playwright: Playwright, dictionary) -> None:
 
     # TODO: Add "Browsy" ASCII logo
 
+    print("Use command 'help' for list of available commands")
     while 1:
         cmd = input("--> ")
+        if cmd == 'help':
+            print("available commands: dump, exit, goto, help, simple")
         if cmd == 'exit':
             exit()
         if cmd == 'simple':
