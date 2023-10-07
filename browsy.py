@@ -24,6 +24,7 @@ def run(playwright: Playwright, dictionary) -> None:
     browser = playwright.chromium.launch_persistent_context(chromium_dir, headless=False)
 
     page = browser.new_page()
+    page.goto(js["$HOME_PAGE"])
 
     # TODO: Add "Browsy" ASCII logo
 
