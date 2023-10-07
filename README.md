@@ -26,10 +26,10 @@ To install Browsy locally:
 
 ## Usage
 
-1. ### Run Browsy  
-    $ `python3 browsy.py sample.txt`
+### Run Browsy
+$ `python3 browsy.py sample.txt`
 
-2. ### Use the "help" command at the prompt to get list of all available commands
+Then use the "help" command at the prompt to list all available commands.
 
 ## Contributing
 
