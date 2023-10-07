@@ -21,15 +21,15 @@ To install Browsy locally:
     $ `source .venv-browsy/bin/activate`
 
 3. ### Install playwright
-    $ `pip install playwright`  
+    $ `pip3 install playwright`  
     $ `playwright install`  
 
-Place `browsy.py` in the current working directory.
-
 ## Usage
-`read -s SECRET`  
-`export SECRET`  
-`python browsy.py sample.txt`
+
+1. ### Run Browsy  
+    $ `python3 browsy.py sample.txt`
+
+2. ### Use the "help" command at the prompt to get list of all available commands
 
 ## Contributing
 
