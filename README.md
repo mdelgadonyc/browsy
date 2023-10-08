@@ -31,6 +31,8 @@ $ `python3 browsy.py sample.json`
 
 Then use the "help" command at the prompt to list all available commands.
 
+![browsy_screenshot.gif](..%2F..%2F..%2F..%2FDownloads%2Fbrowsy_screenshot.gif)
+
 ## Contributing
 
 Please open an issue to suggest fixes or ideas for improving Browsy
